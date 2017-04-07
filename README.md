@@ -1,7 +1,7 @@
 # bitmap
 Search 2D bitmaps for blocks of adjacent cells whose values are 1
 
-##Usage
+## Usage
 	./bitmap.py -h
 	usage: bitmap.py [-h] [-c COLUMN_DELIMITER] [-r ROW_DELIMITER] [-d]
 	
@@ -18,7 +18,7 @@ Search 2D bitmaps for blocks of adjacent cells whose values are 1
 	                        and [1,1] would be considered adjacent (default:
 	                        False)
 
-##Examples
+## Examples
 	$ echo "0101
 	0111
 	0101" > bitmap.txt
