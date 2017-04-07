@@ -22,6 +22,13 @@ Search 2D bitmaps for blocks of adjacent cells whose values are 1
 	$ echo "0101
 	0111
 	0101" > bitmap.txt
+	$ ./bitmap.py < bitmap.txt 
+	bitmap:
+	0101
+	0111
+	0101
+	blocks:
+	[(0, 1), (1, 1), (1, 2), (1, 3), (0, 3), (2, 3), (2, 1)]
   
 Ther are several sample files in the `bitmaps` directory:
 
