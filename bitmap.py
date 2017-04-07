@@ -12,7 +12,7 @@ def adjacents(bitmap, cell, diagonals=False):
     rows, cols = bitmap.shape
     north = (i-1,j) if 0 < i else None
     east = (i,j+1) if j < cols - 1 else None
-    south = (i+1,j) if i < rows - 1else None
+    south = (i+1,j) if i < rows - 1 else None
     west = (i,j-1) if 0 < j else None
     cells = [cell, north, east, south, west]
     if diagonals:
