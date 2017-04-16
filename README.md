@@ -30,13 +30,17 @@ Search 2D bitmaps for blocks of adjacent cells whose values are 1
 	0111
 	0101
 	blocks:
-	[(0, 1), (1, 1), (1, 2), (1, 3), (0, 3), (2, 3), (2, 1)]
-  
-Ther are several sample files in the `bitmaps` directory:
+	[(0, 1), (0, 3), (1, 1), (1, 2), (1, 3), (2, 1), (2, 3)]  
+
+There are two strategies that can be set via the `-s/--strategy` option:
+
+1. `que`: This strategy models each block as a double-ended que, popping and pushing cells from the que until each block has been exhaustively explored.
+2. `recursive`: This strategy explores blocks using recursive method calls.  This strategy is limited by the call-stack size (blocks larger than the call-stack size in the input will cause a stack overflow).
+
+There are several sample files in the `bitmaps` directory:
 
 	$ for f in bitmaps/*.txt; do
 		./bitmap.py < "$f"
-	done
 	bitmap:
 	10
 	00
@@ -54,7 +58,7 @@ Ther are several sample files in the `bitmaps` directory:
 	00000
 	00001
 	blocks:
-	[(1, 1), (1, 2), (2, 2), (2, 1)]
+	[(1, 1), (1, 2), (2, 1), (2, 2)]
 	[(4, 4)]
 	bitmap:
 	10001
@@ -65,13 +69,13 @@ Ther are several sample files in the `bitmaps` directory:
 	blocks:
 	[(0, 0)]
 	[(0, 4), (1, 4), (2, 4), (3, 4), (4, 4)]
-	[(1, 1), (1, 2), (2, 2), (2, 1)]
+	[(1, 1), (1, 2), (2, 1), (2, 2)]
 	bitmap:
 	0101
 	0111
 	0101
 	blocks:
-	[(0, 1), (1, 1), (1, 2), (1, 3), (0, 3), (2, 3), (2, 1)]
+	[(0, 1), (0, 3), (1, 1), (1, 2), (1, 3), (2, 1), (2, 3)]
 	bitmap:
 	0011111100
 	0100000010
@@ -93,16 +97,11 @@ Ther are several sample files in the `bitmaps` directory:
 	[(6, 4), (6, 5)]
 	[(8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7)]
 
-There are two strategies that can be set via the `-s/--strategy` option:
-
-1. `que`: This strategy models each block as a double-ended que, popping and pushing cells from the que until each block has been exhaustively explored.
-2. `recursive`: This strategy explores blocks using recursive method calls.  This strategy is limited by the call-stack size (blocks larger than the call-stack size in the input will cause a stack overflow).
 
 You can supply the `-d/--count-diagonals` option if you want to include diagonal cells as adjacent to one another:
 
 	$ for f in bitmaps/*.txt; do
 		./bitmap.py < "$f"
-	done
 	bitmap:
 	10
 	00
@@ -120,7 +119,7 @@ You can supply the `-d/--count-diagonals` option if you want to include diagonal
 	00000
 	00001
 	blocks:
-	[(1, 1), (1, 2), (2, 2), (2, 1)]
+	[(1, 1), (1, 2), (2, 1), (2, 2)]
 	[(4, 4)]
 	bitmap:
 	10001
@@ -129,14 +128,14 @@ You can supply the `-d/--count-diagonals` option if you want to include diagonal
 	00001
 	00001
 	blocks:
-	[(0, 0), (1, 1), (1, 2), (2, 2), (2, 1)]
+	[(0, 0), (1, 1), (1, 2), (2, 1), (2, 2)]
 	[(0, 4), (1, 4), (2, 4), (3, 4), (4, 4)]
 	bitmap:
 	0101
 	0111
 	0101
 	blocks:
-	[(0, 1), (1, 2), (0, 3), (1, 3), (2, 3), (2, 1), (1, 1)]
+	[(0, 1), (0, 3), (1, 1), (1, 2), (1, 3), (2, 1), (2, 3)]
 	bitmap:
 	0011111100
 	0100000010
@@ -148,7 +147,7 @@ You can supply the `-d/--count-diagonals` option if you want to include diagonal
 	0100000010
 	0011111100
 	blocks:
-	[(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 8), (2, 8), (3, 8), (4, 8), (5, 8), (6, 8), (7, 8), (8, 7), (8, 6), (8, 5), (8, 4), (8, 3), (8, 2), (7, 1), (6, 1), (5, 1), (4, 1), (3, 1), (2, 1), (1, 1)]
+	[(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 1), (1, 8), (2, 1), (2, 8), (3, 1), (3, 8), (4, 1), (4, 8), (5, 1), (5, 8), (6, 1), (6, 8), (7, 1), (7, 8), (8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7)]
 	[(2, 3), (3, 3)]
 	[(2, 6), (3, 6)]
-	[(5, 3), (6, 4), (6, 5), (5, 6)]
+	[(5, 3), (5, 6), (6, 4), (6, 5)]
