@@ -133,7 +133,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '-s', '--strategy',
         default='que',
-        choices=set(STRATEGIES.keys())
+        choices=set(STRATEGIES.keys()),
+        help='specify a strategy to use'
     )
     parser.add_argument(
         '-d', '--count-diagonals',

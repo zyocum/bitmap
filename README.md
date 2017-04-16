@@ -3,7 +3,8 @@ Search 2D bitmaps for blocks of adjacent cells whose values are 1
 
 ## Usage
 	./bitmap.py -h
-	usage: bitmap.py [-h] [-c COLUMN_DELIMITER] [-r ROW_DELIMITER] [-d]
+	usage: bitmap.py [-h] [-c COLUMN_DELIMITER] [-r ROW_DELIMITER]
+	                 [-s {recursive,que}] [-d]
 	
 	Search 2D bitmaps for blocks of adjacent cells whose values are 1
 	
@@ -13,11 +14,12 @@ Search 2D bitmaps for blocks of adjacent cells whose values are 1
 	                        column delimiter string (default: None)
 	  -r ROW_DELIMITER, --row-delimiter ROW_DELIMITER
 	                        row delimiter string (default: )
+	  -s {recursive,que}, --strategy {recursive,que}
+	                        specify a strategy to use (default: que)
 	  -d, --count-diagonals
 	                        consider diagonal cells to be adjacent; e.g., [0,0]
 	                        and [1,1] would be considered adjacent (default:
 	                        False)
-
 ## Examples
 	$ echo "0101
 	0111
@@ -90,6 +92,11 @@ Ther are several sample files in the `bitmaps` directory:
 	[(5, 6)]
 	[(6, 4), (6, 5)]
 	[(8, 2), (8, 3), (8, 4), (8, 5), (8, 6), (8, 7)]
+
+There are two strategies that can be set via the `-s/--strategy` option:
+
+1. `que`: This strategy models each block as a double-ended que, popping and pushing cells from the que until each block has been exhaustively explored.
+2. `recursive`: This strategy explores blocks using recursive method calls.  This strategy is limited by the call-stack size (blocks larger than the call-stack size in the input will cause a stack overflow).
 
 You can supply the `-d/--count-diagonals` option if you want to include diagonal cells as adjacent to one another:
 
