@@ -103,6 +103,7 @@ You can supply the `-d/--count-diagonals` option if you want to include diagonal
 
 	$ for f in bitmaps/*.txt; do
 		./bitmap.py < "$f"
+	done
 	bitmap:
 	10
 	00
