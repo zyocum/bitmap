@@ -102,7 +102,7 @@ There are several sample files in the `bitmaps` directory:
 You can supply the `-d/--count-diagonals` option if you want to include diagonal cells as adjacent to one another:
 
 	$ for f in bitmaps/*.txt; do
-		./bitmap.py < "$f"
+		./bitmap.py -d < "$f"
 	done
 	bitmap:
 	10
