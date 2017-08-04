@@ -41,6 +41,7 @@ There are several sample files in the `bitmaps` directory:
 
 	$ for f in bitmaps/*.txt; do
 		./bitmap.py < "$f"
+	done
 	bitmap:
 	10
 	00
